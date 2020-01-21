@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200121192732) do
+ActiveRecord::Schema.define(version: 20200121221946) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
@@ -30,12 +30,13 @@ ActiveRecord::Schema.define(version: 20200121192732) do
   end
 
   create_table "performances", force: :cascade do |t|
-    t.integer  "artist_id_id"
-    t.integer  "concert_id_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["artist_id_id"], name: "index_performances_on_artist_id_id"
-    t.index ["concert_id_id"], name: "index_performances_on_concert_id_id"
+    t.integer  "artist_id"
+    t.integer  "concert_id"
+    t.boolean  "headliner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_performances_on_artist_id"
+    t.index ["concert_id"], name: "index_performances_on_concert_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -53,8 +54,9 @@ ActiveRecord::Schema.define(version: 20200121192732) do
     t.string   "name"
     t.string   "username"
     t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
   end
 
   create_table "venues", force: :cascade do |t|

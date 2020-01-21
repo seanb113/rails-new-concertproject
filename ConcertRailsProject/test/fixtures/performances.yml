@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  artist_id: one
-  concert_id: one
+  artist: one
+  concert: one
+  headliner: false
 
 two:
-  artist_id: two
-  concert_id: two
+  artist: two
+  concert: two
+  headliner: false

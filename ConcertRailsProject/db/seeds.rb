@@ -12,3 +12,8 @@ toolconcert = Concert.create([{
     :venue_id  => 1,
     :date    => DateTime.new(2020,9,1,19)
   }])
+
+beatles = Artist.create(genre: 'Rock', name: 'The Beatles', bio: 'Is a british band')
+
+toolatcapital1 = Performance.create(artist_id: 1, concert_id: 1, headliner: true)
+beatlesatcapital1 = Performance.create(artist_id: 2, concert_id: 1, headliner: false)

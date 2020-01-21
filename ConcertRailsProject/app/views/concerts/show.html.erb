@@ -1,3 +1,5 @@
 <h1><%= @concert.name %> information</h1>
 <h2><%= link_to @concert.venue.name, venue_path(@concert.venue) %></h2>
 <h2><%= @concert.try(:date).try(:strftime, '%B %e, %Y') %></h2>
+<h2>Main Act: <%= @concert.headliner %></h2>
+<h2>Opening Act: <%= @concert.support_acts %></h2>
