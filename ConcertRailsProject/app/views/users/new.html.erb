@@ -1,3 +1,9 @@
+<ul>
+<% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+<% end %>
+</ul>
+
 <h1>Create a user</h1>
 <%= form_for @user do |f| %>
 <%= f.label :name, "Name" %>

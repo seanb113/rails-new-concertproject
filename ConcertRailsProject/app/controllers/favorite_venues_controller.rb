@@ -2,11 +2,8 @@ class FavoriteVenuesController < ApplicationController
   before_action :find_favorite
 
   def create
-    current_user.favorite_venue(@venue)
-    if favorite_venue.save
-      redirect_to :back, flash[:notice] = 'You favorited #{@venue.name}'
-    else
-      redirect_to :back, flash[:alert] = 'Already added to favorites'
+    if current_user.favorite_venue(@venue)
+      redirect_to :back
     end
   end
 

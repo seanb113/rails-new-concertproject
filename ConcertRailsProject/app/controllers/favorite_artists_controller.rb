@@ -3,9 +3,11 @@ class FavoriteArtistsController < ApplicationController
 
   def create
     if current_user.favorite_artist(@artist)
-      render 'artists/show', flash.now[:notice] = 'Added to favorites'
+      flash.notice = 'Added to favorites'
+      render 'artists/show'
     else
-      redirect_to :back, flash.now[:alert] = 'Already added to favorites'
+      flash.notice = 'Already added to favorites'
+      render 'artists/show'
     end
   end
 

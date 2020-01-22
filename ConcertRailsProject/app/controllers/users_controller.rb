@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     #byebug
-    if @user
+    if @user.save
       @user.log_in(session)
       redirect_to user_path(@user)
     else
