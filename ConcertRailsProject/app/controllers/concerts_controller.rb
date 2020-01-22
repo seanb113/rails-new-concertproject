@@ -2,7 +2,12 @@ class ConcertsController < ApplicationController
   before_action :find_concert, only: [:show, :edit, :destroy]
   
   def index
-    @concerts = Concert.order(params[:sort])
+    #byebug
+    if params[:sort] == "location"
+      @concerts = Concert.all.sort_by{|c| c.location}
+    else
+    @concerts = Concert.all.sort_by{|c| c[params[:sort]]}
+    end
   end
   
   def show

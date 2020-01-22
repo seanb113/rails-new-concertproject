@@ -17,6 +17,7 @@ beatles = Artist.create(genre: 'Rock', name: 'The Beatles', bio: 'Is a british b
 
 toolatcapital1 = Performance.create(artist_id: 1, concert_id: 1, headliner: true)
 beatlesatcapital1 = Performance.create(artist_id: 2, concert_id: 1, headliner: false)
+
 beatlesatmsg = Performance.create(artist_id: 2, concert_id: 2, headliner: true)
 
 msg = Venue.create(name: 'Madison Square Garden', capacity: 10, location: 'New York City')

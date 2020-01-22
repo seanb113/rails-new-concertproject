@@ -4,11 +4,9 @@ class Concert < ApplicationRecord
   has_many :artists, through: :performances
 
   def headliner
-    self.performances.select do |p|
-      if p.headliner == true
-      return p.artist.name
-      end
-    end
+    self.performances.find do |p|
+      p.headliner == true
+    end.artist.name
   end
 
   def support_acts
@@ -18,4 +16,9 @@ class Concert < ApplicationRecord
       end
     end
   end
+
+  def location
+    self.venue.location
+  end
+
 end

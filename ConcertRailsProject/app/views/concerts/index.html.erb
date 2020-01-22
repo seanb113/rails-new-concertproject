@@ -4,11 +4,15 @@
 <th><%= link_to "Name", :sort => "name" %></th>
 <th><%= link_to "Artist", :sort => "artist" %></th>
 <th><%= link_to "Date", :sort => "date" %></th>
+<th><%= link_to "Venue", :sort => "venue" %></th>
+<th><%= link_to "Location", :sort => "location" %></th>
 <% for concert in @concerts %>
 <tr>
   <td><%= concert.name %></td>
   <td><%= concert.headliner %></td>
   <td><%= concert.date.strftime("%B %e, %Y") %></td>
+  <td><%= concert.venue.name %></td>
+  <td><%= concert.location %></td>
 </tr>
 <% end %>
 </table>

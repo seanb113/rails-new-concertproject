@@ -16,7 +16,7 @@
           <div><%= link_to "Logout", logout_path %></div>
         </div>
       <% else %>
-        <div>Please log in</div>
+        <div><%= link_to "Please log in", login_path %></div>
       <% end %>
     <% end %>
     <%= yield %>
