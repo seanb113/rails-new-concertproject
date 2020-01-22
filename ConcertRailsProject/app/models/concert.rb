@@ -1,7 +1,10 @@
 class Concert < ApplicationRecord
   belongs_to :venue
+  belongs_to :upcomingConcerts
   has_many :performances
   has_many :artists, through: :performances
+  has_many :users, through: :upcomingConcerts
+  
 
   def headliner
     self.performances.find do |p|

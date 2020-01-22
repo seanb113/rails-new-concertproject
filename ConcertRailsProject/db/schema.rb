@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200121221946) do
+ActiveRecord::Schema.define(version: 20200122155812) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,24 @@ ActiveRecord::Schema.define(version: 20200121221946) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["venue_id"], name: "index_concerts_on_venue_id"
+  end
+
+  create_table "favorite_artists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_favorite_artists_on_artist_id"
+    t.index ["user_id"], name: "index_favorite_artists_on_user_id"
+  end
+
+  create_table "favorite_venues", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorite_venues_on_user_id"
+    t.index ["venue_id"], name: "index_favorite_venues_on_venue_id"
   end
 
   create_table "performances", force: :cascade do |t|
@@ -48,6 +66,15 @@ ActiveRecord::Schema.define(version: 20200121221946) do
     t.datetime "updated_at", null: false
     t.index ["concert_id"], name: "index_reviews_on_concert_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "upcoming_concerts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "concert_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["concert_id"], name: "index_upcoming_concerts_on_concert_id"
+    t.index ["user_id"], name: "index_upcoming_concerts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
