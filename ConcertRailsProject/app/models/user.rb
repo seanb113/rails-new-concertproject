@@ -41,4 +41,8 @@ def favorited?(artist)
     favorite_artists.find_by(artist_id: artist.id).present?
 end
 
+def log_in(session)
+    session[:user_id] = self.id
+end
+
 end

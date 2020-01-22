@@ -8,7 +8,9 @@ class UsersController < ApplicationController
   
   def create
     @user = User.create(user_params)
-    if @user.save
+    #byebug
+    if @user
+      @user.log_in(session)
       redirect_to user_path(@user)
     else
       render :new
