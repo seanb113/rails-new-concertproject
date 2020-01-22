@@ -1,6 +1,14 @@
 <h1>Upcoming Concerts</h1>
-<ul>
-<% @concerts.each do |c| %>
-    <li><%= link_to c.name, concert_path(c) %> </li>
-    <% end %>
-</ul>
+<table class="concert">
+<tr>
+<th><%= link_to "Name", :sort => "name" %></th>
+<th><%= link_to "Artist", :sort => "artist" %></th>
+<th><%= link_to "Date", :sort => "date" %></th>
+<% for concert in @concerts %>
+<tr>
+  <td><%= concert.name %></td>
+  <td><%= concert.headliner %></td>
+  <td><%= concert.date.strftime("%B %e, %Y") %></td>
+</tr>
+<% end %>
+</table>

@@ -2,7 +2,7 @@ class ConcertsController < ApplicationController
   before_action :find_concert, only: [:show, :edit, :destroy]
   
   def index
-    @concerts = Concert.all
+    @concerts = Concert.order(params[:sort])
   end
   
   def show
