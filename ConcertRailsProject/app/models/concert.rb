@@ -1,9 +1,9 @@
 class Concert < ApplicationRecord
   belongs_to :venue
-  belongs_to :upcomingConcerts
+  belongs_to :upcoming_concerts, optional: true
   has_many :performances
   has_many :artists, through: :performances
-  has_many :users, through: :upcomingConcerts
+  has_many :users, through: :upcoming_concerts
   
 
   def headliner

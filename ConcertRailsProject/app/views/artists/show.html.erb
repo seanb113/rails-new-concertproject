@@ -7,7 +7,8 @@
     </ul>
 <% end %>
 
-<%= link_to "Add to favorites", do @artist.favorite_artist
+<%= link_to "Add As Favorite", artist_favorite_artists_path(@artist), method: :post %>
+<%= link_to "Remove As Favorite", artist_favorite_artist_path(@artist), method: :delete %>
 
 <%= link_to "Back to all Artists", artists_path %>
 
