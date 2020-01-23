@@ -8,10 +8,10 @@
 <th><%= link_to "Location", :sort => "location" %></th>
 <% for concert in @concerts %>
 <tr>
-  <td><%= concert.name %></td>
-  <td><%= concert.headliner %></td>
+  <td><%= link_to concert.name, concert_path(concert.id) %></td>
+  <td><%= link_to concert.headliner.artist.name, artist_path(concert.headliner.artist.id) %></td>
   <td><%= concert.date.strftime("%B %e, %Y") %></td>
-  <td><%= concert.venue.name %></td>
+  <td><%= link_to concert.venue.name, venue_path(concert.venue.id) %></td>
   <td><%= concert.location %></td>
 </tr>
 <% end %>

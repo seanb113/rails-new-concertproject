@@ -3,3 +3,19 @@
 <h2><%= @concert.try(:date).try(:strftime, '%B %e, %Y') %></h2>
 <h2>Main Act: <%= @concert.headliner %></h2>
 <h2>Opening Act: <%= @concert.support_acts %></h2>
+
+
+<%= form_for @concert do |f| %>
+    <%= f.label "Concert Review:" %>
+    <%= f.text_field :title %><br/>
+  
+    <%= f.fields_for :review do |inner_form| %>
+      <%= inner_form.label :title %>
+      <%= inner_form.text_field :title %><br/>
+  
+      <%= inner_form.label :content %>
+      <%= inner_form.text_field :content %><br/>
+    <% end %>
+  
+    <%= f.submit %>
+  <% end %>

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     #byebug
     @user = User.find_by(username: params[:username])
-    if @user 
+    if @user && @user.authenticate(params[:password])
       @user.log_in(session)
       redirect_to user_path(@user)
     else

@@ -7,11 +7,12 @@ class User < ApplicationRecord
     has_many :venues, through: :favorite_venues
     has_many :upcoming_concerts
     has_many :concerts, through: :upcoming_concerts
+    has_many :reviews
     has_secure_password
     validates :username, presence: true, uniqueness: { case_sensitive: true }
     validates :name, presence: true, length: { minimum: 2 }
     validates :age, presence: true, inclusion: { in: 18..99}
-    validates :password, presence: true, length: { :within => 8..40 }
+    validates :password, presence: true, length: { :within => 8..20 }
 
 def favorite_artist(artist)
     FavoriteArtist.find_or_create_by(artist_id: artist.id, user_id: self.id)
