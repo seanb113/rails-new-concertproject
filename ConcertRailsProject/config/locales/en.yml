@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+
+  en:
+  activerecord:
+    attributes:
+      user:
+        age: "Age"
+    errors:
+      models:
+        user:
+          attributes:
+            age:
+              blank: "Must be 18 or older"

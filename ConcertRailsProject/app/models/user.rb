@@ -11,7 +11,7 @@ class User < ApplicationRecord
     has_secure_password
     validates :username, presence: true, uniqueness: { case_sensitive: true }
     validates :name, presence: true, length: { minimum: 2 }
-    validates :age, presence: true, inclusion: { in: 18..99}
+    validates :age, presence: true, numericality: { greater_than: 17 }
     validates :password, presence: true, length: { :within => 8..20 }
 
 def favorite_artist(artist)
@@ -33,16 +33,20 @@ def unfavorite_venue(venue)
 end
 
 def upcoming_concert(concert)
-    UpcomingConcert.find_or_create_by(concert_id: concert.id, user_id: user.id)
+    UpcomingConcert.find_or_create_by(concert_id: concert.id, user_id: self.id)
 end
 
 def not_attending(concert)
-    upcoming_concerts.where(concert_id: concert.id, user_id: user.id).destroy_all
+    upcoming_concerts.where(concert_id: concert.id, user_id: self.id).destroy_all
     concert.reload
 end
 
 def log_in(session)
     session[:user_id] = self.id
+end
+
+def past_concerts
+    self.concerts.select {|c| c.date.past?}
 end
 
 end

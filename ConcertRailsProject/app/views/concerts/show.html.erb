@@ -1,21 +1,40 @@
 <h1><%= @concert.name %> information</h1>
 <h2><%= link_to @concert.venue.name, venue_path(@concert.venue) %></h2>
 <h2><%= @concert.try(:date).try(:strftime, '%B %e, %Y') %></h2>
-<h2>Main Act: <%= @concert.headliner %></h2>
+<h2>Main Act: <%= @concert.headliner.artist.name %></h2>
 <h2>Opening Act: <%= @concert.support_acts %></h2>
 
+<% if @concert.happened? %>
+<h2> Leave a review! <h2>
+<% if flash.notice %>
+<%= flash.notice %>
+<% end %>
+<%= form_for [@concert, @review] do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %><br/>
+      <%= f.label :content %>
+      <%= f.text_area :content %><br/>
+      <%= f.label :rating, "Rating" %>
+      <%= f.number_field :rating, {min: 0, max: 10} %>
+      <%= f.submit %>
+      <% end %>
+      
+      <h1> Reviews: <h1>
+      <ul>
+      <% @concert.reviews.each do |r| %>
+        <li><%= r.title %></li>
+        <li>Review By: <%= link_to r.user.username, user_path(r.user_id) %></li>
+        <li><%= r.content %></li>
+        <li>Rating (out of 10): <%= r.rating %></li>
+        <% end %>
+        </ul>
+        
+        <% else %>
+        <%= link_to "RSVP", concert_upcoming_concerts_path(@concert), method: :post %>
+        <% if flash.notice %>
+        <%= flash.notice %>
+        <% end %>
+        <%= link_to "No longer attending this event?", concert_upcoming_concert_path(@concert), method: :delete %>
+        <% end %>
 
-<%= form_for @concert do |f| %>
-    <%= f.label "Concert Review:" %>
-    <%= f.text_field :title %><br/>
-  
-    <%= f.fields_for :review do |inner_form| %>
-      <%= inner_form.label :title %>
-      <%= inner_form.text_field :title %><br/>
-  
-      <%= inner_form.label :content %>
-      <%= inner_form.text_field :content %><br/>
-    <% end %>
-  
-    <%= f.submit %>
-  <% end %>
+        

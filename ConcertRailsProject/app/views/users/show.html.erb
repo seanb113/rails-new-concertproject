@@ -29,3 +29,23 @@
     </li>
     <% end %>
 </ul>
+
+<h3>Attended Concerts:<h3>
+<ul>
+<% @user.past_concerts.each do |c| %>
+    <li> 
+    <%= link_to c.name, concert_path(c) %> 
+    </li>
+    <% end %>
+</ul>
+
+<h3>My reviews:<h3>
+<ul>
+<% @user.reviews.each do |r| %>
+    <li> 
+    <%= link_to r.concert.name, concert_path(r.concert.id) %>
+    <%= r.title %>
+    <%= r.content %>
+    </li>
+    <% end %>
+</ul>

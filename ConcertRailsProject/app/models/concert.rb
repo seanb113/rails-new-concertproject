@@ -5,7 +5,7 @@ class Concert < ApplicationRecord
   has_many :artists, through: :performances
   has_many :users, through: :upcoming_concerts
   has_many :reviews
-  accepts_nested_attributes_for :reviews
+  has_many :users, through: :reviews
   
 
   def headliner
@@ -26,13 +26,12 @@ class Concert < ApplicationRecord
     self.venue.location
   end
 
-  private
+  def happened?
+    self.date.past?
+  end
 
-  def concert_params
-    params.require(:concert).permit(
-      :name, :venue_id, :date,
-      reviews_attributes: [ :title, :content ]
-    )
+  def upcoming
+    !Concert.all.date.past?
   end
 
 end

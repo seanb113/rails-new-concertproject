@@ -1,8 +1,12 @@
 <h1><%= @venue.name %> information</h1>
 <h2>Capacity: <%= @venue.capacity %> </h2>
-<h2><%= @venue.location %> </h2>
+<h2><%= @venue.location.name %> </h2>
 
 <%= link_to "Add As Favorite", venue_favorite_venues_path(@venue), method: :post %>
-<%= link_to "Remove As Favorite", venue_favorite_venues_path(@venue), method: :delete %>
+<% if flash.notice %>
+<%= flash.notice %>
+<% end %>
+<%= link_to "Remove As Favorite", venue_favorite_venue_path(@venue), method: :delete %>
+
 
 <%= link_to "Back to all Venues", venues_path %>

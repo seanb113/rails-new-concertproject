@@ -1,18 +1,21 @@
 class FavoriteVenuesController < ApplicationController
-  before_action :find_favorite
+  before_action :find_favorite, :require_login
 
   def create
-    if current_user.favorite_venue(@venue)
-      redirect_to :back
+    if FavoriteVenue.create(venue: @venue, user: current_user)
+      redirect_to @venue, notice: 'Added to your favorites'
+    else
+      redirect_to @venue, alert: 'Already added to your favorites'
     end
   end
 
   def destroy
-    current_user.unfavorite_venue(@venue)
-    if unfavorite_venue.destroy
-      redirect_to :back, flash[:notice] = 'Removed from favorites'
+    if current_user.unfavorite_venue(@venue)
+      flash.notice = 'Removed from favorites'
+      render 'venues/show'
     else
-      redirect_to :back, flash[:alert] = 'Not saved as a favorite'
+      flash.alert = 'Not saved as a favorite'
+      render 'venues/show'
     end
   end
 
@@ -20,5 +23,10 @@ class FavoriteVenuesController < ApplicationController
 
   def find_favorite
     @venue = Venue.find(params[:venue_id])
+  end
+
+  def require_login
+    redirect_to controller: 'sessions', action: 'new' unless current_user
+    flash.notice = "You must be logged in to add favorites"
   end
 end

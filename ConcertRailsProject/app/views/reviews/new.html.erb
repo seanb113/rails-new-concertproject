@@ -4,5 +4,7 @@
     <%= f.text_field :title %>
     <%= f.label :content, "Content" %>
     <%= f.text_field :content %>
+    <%= f.label :rating, "Rating" %>
+    <%= f.number_field :rating, max: 10 %>
     <%= f.submit "Create Review" %>
 <% end %>

@@ -3,7 +3,6 @@ class CreateVenues < ActiveRecord::Migration[5.0]
     create_table :venues do |t|
       t.string :name
       t.integer :capacity
-      t.string :location
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200122155812) do
+ActiveRecord::Schema.define(version: 20200123172750) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(version: 20200122155812) do
     t.index ["venue_id"], name: "index_favorite_venues_on_venue_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "performances", force: :cascade do |t|
     t.integer  "artist_id"
     t.integer  "concert_id"
@@ -64,6 +70,7 @@ ActiveRecord::Schema.define(version: 20200122155812) do
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "rating"
     t.index ["concert_id"], name: "index_reviews_on_concert_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -89,9 +96,10 @@ ActiveRecord::Schema.define(version: 20200122155812) do
   create_table "venues", force: :cascade do |t|
     t.string   "name"
     t.integer  "capacity"
-    t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
+    t.index ["location_id"], name: "index_venues_on_location_id"
   end
 
 end
