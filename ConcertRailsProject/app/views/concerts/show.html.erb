@@ -1,7 +1,9 @@
+
+
 <h1><%= @concert.name %> information</h1>
 <h2><%= link_to @concert.venue.name, venue_path(@concert.venue) %></h2>
 <h2><%= @concert.try(:date).try(:strftime, '%B %e, %Y') %></h2>
-<h2>Main Act: <%= @concert.headliner.artist.name %></h2>
+<h2>Main Act: <%= link_to @concert.headliner.artist.name, artist_path(@concert.headliner.artist.id) %></h2>
 <h2>Opening Act: <%= @concert.support_acts %></h2>
 
 <% if @concert.happened? %>
@@ -22,8 +24,8 @@
       <h1> Reviews: <h1>
       <ul>
       <% @concert.reviews.each do |r| %>
-        <li><%= r.title %></li>
         <li>Review By: <%= link_to r.user.username, user_path(r.user_id) %></li>
+        <li>Written <%= r.created_at.strftime('%B %e, %Y') %></li>
         <li><%= r.content %></li>
         <li>Rating (out of 10): <%= r.rating %></li>
         <% end %>

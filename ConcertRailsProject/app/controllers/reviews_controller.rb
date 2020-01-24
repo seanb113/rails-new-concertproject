@@ -10,14 +10,14 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @review = Review.new(review_params)
+    @review.update(concert_id: params[:concert_id], user_id: current_user.id)
     #byebug
-      @review = Review.create(concert_id: params[:concert_id], user_id: current_user.id)
-    if @review.save
-      @review.update(review_params)
+    if @review.valid?
+      @review.save
       redirect_to concert_path(@review.concert_id)
     else
-      flash.notice = "You already reviewed this concert."
-      redirect_to concert_path(@review.concert_id)
+      redirect_to concert_path(@review.concert_id), notice: "You already reviewed this concert"
     end
   end
 
@@ -28,6 +28,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :content, :concert_id, :rating)
+    params.require(:review).permit(:title, :content, :concert_id, :user_id, :rating)
   end
 end

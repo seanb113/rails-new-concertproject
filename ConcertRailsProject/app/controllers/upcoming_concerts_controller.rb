@@ -2,20 +2,20 @@ class UpcomingConcertsController < ApplicationController
   before_action :find_favorite, :require_login
 
   def create
-    if UpcomingConcert.create(concert: @concert, user: current_user)
-      redirect_to @concert, notice: 'RSVPed'
+    #byebug
+    if UpcomingConcert.create(concert: @concert, user: current_user).errors.messages.empty?
+      redirect_to @concert, notice:  'RSVPed'
     else
-      redirect_to @concert, alert: 'Already RSVPed'
+      redirect_to @concert, notice: 'Already RSVPed'
     end
   end
 
   def destroy
     if current_user.not_attending(@concert)
-      flash[:notice] = 'Removed from upcoming events.'
-      render 'concerts/show'
+      redirect_to @concert, notice: 'Removed from upcoming events.'
+      #render 'concerts/show'
     else
-      flash[:alert] = 'You did not RSVP to this event'
-      render 'concerts/show'
+      redirect_to @concert, notice: 'You did not RSVP to this event'
     end
   end
 
@@ -28,7 +28,7 @@ class UpcomingConcertsController < ApplicationController
 
   def require_login
    redirect_to controller: 'sessions', action: 'new' unless current_user
-   flash.notice = "You must be logged in to RSVP"
+   flash.now.notice = "You must be logged in to RSVP"
   end
 
 end

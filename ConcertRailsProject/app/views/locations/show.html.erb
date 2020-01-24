@@ -1,6 +1,14 @@
-<h1>Venues and concerts in <%= @location.name %></h1>
 <ul>
+<h1>Venues in <%= @location.name %></h1>
 <% @location.venues.each do |v| %>
-   <li><%= link_to v.name, venues_path(v) %><li>
+   <li><%= link_to v.name, venues_path(v) %></li>
+   <% end %>
+</ul>
+
+
+<ul>
+<h1>Concerts happening today in <%= @location.name %></h1>
+    <% @location.todays_concerts.each do |c| %>
+    <li><%= link_to c.name, concert_path(c.id) %></li>
    <% end %>
 </ul>

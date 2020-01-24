@@ -38,6 +38,7 @@ toolconcert = Concert.create({
       :name      => "Beatle Without Ringo 2020",
       :venue_id  => msg.id,
       :date    => DateTime.new(2019,10,1,19)
+<<<<<<< HEAD
       })
 
 #Performances
@@ -50,3 +51,21 @@ beatlesatc1 = Performance.create(artist_id: beatles.id, concert_id: beatlesconce
 
 # byebug
 # 0
+=======
+      }])
+      
+beatlesatc1 = Performance.create(artist_id: 2, concert_id: 3, headliner: true)
+
+anthem = Venue.create(name: 'The Anthem', capacity: 500, location_id: 1)
+
+beatlesconcert3 = Concert.create([{
+    :name      => "Hologram Lennon 2020",
+    :venue_id  => 3,
+    :date    => DateTime.new(2020,1,24,19)
+    }])
+
+beatlesatc12 = Performance.create(artist_id: 2, concert_id: 4, headliner: true)
+
+
+      
+>>>>>>> bcfc8f79f98767b94531789082b2dbc978f55679

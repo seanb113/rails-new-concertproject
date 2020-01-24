@@ -19,8 +19,11 @@ def favorite_artist(artist)
 end
 
 def unfavorite_artist(artist)
-    FavoriteArtist.where(artist_id: artist.id, user_id: self.id).destroy_all
+    @favorited_artist = FavoriteArtist.where(artist_id: artist.id, user_id: self.id)
+    if @favorited_artist.exists?
+        @favorited_artist.destroy_all
     artist.reload
+    end
 end
 
 def favorite_venue(venue)
@@ -28,8 +31,11 @@ def favorite_venue(venue)
 end
 
 def unfavorite_venue(venue)
-    favorite_venues.where(venue_id: venue.id, user_id: self.id).destroy_all
+    @favorited_venue = FavoriteVenue.where(venue_id: venue.id, user_id: self.id)
+    if @favorited_venue.exists?
+        @favortied_venue.destroy_all
     venue.reload
+    end
 end
 
 def upcoming_concert(concert)
@@ -37,8 +43,11 @@ def upcoming_concert(concert)
 end
 
 def not_attending(concert)
-    upcoming_concerts.where(concert_id: concert.id, user_id: self.id).destroy_all
+    @rsvp = upcoming_concerts.where(concert_id: concert.id, user_id: self.id)
+    if @rsvp.exists?
+        @rsvp.destroy_all
     concert.reload
+    end
 end
 
 def log_in(session)
@@ -48,5 +57,24 @@ end
 def past_concerts
     self.concerts.select {|c| c.date.past?}
 end
+
+def rsvped?(concert)
+    self.upcoming_concerts.each do |u|
+      u.concert_id == concert
+    end
+end
+
+def favorited_venue?(venue)
+    self.favorite_venues.each do |v|
+        v.id == venue
+      end
+end
+
+def favorited_artist?(artist)
+    self.favorite_artists.each do |a|
+        a.id == artist
+      end
+end
+
 
 end

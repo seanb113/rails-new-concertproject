@@ -1,11 +1,13 @@
 <h1><%= @artist.name %> information</h1>
 <h2>Genre: <%= @artist.genre %><h2>
 <h2>Bio: <%= @artist.bio %><h2>
+
 <ul>
-<li> <% @artist.concerts.each do |c| %> </li>
-    <li> <%=link_to c.name, concert_path(c) %> </li>
+<h3> Concerts: <h3>
+    <% @artist.concerts.each do |c| %>
+    <li> <%= link_to c.name, concert_path(c) %> </li>
+    <% end %>
     </ul>
-<% end %>
 
 <%= link_to "Add As Favorite", artist_favorite_artists_path(artist_id: @artist), method: :post %>
 <% if flash.notice %>
@@ -14,4 +16,3 @@
 <%= link_to "Remove As Favorite", artist_favorite_artist_path(@artist), method: :delete %>
 
 <%= link_to "Back to all Artists", artists_path %>
-

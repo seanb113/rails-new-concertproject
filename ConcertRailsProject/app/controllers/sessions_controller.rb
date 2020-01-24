@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       @user.log_in(session)
       redirect_to user_path(@user)
     else
-      flash.notice = "No user found with that name/password"
+      flash.now.notice =  "No user found with that name/password"
       render :new
     end
   end
