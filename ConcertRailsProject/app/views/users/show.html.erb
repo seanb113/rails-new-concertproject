@@ -1,22 +1,26 @@
-<h1>Profile Page for <%= @user.name %> </h1>
-<h2>Username: <%= @user.username %></h2>
-<h2>Age: <%= @user.age %></h2>
+<div id="profile-header"><h1>Profile Page for <%= @user.name %> </h1>
+  </div>
+  <div id="profile-attributes">
+    <h2>Username: <%= @user.username %></h2>
+    <h2>Age: <%= @user.age %></h2>
+  </div>
 
-<h3>Favorite Artists:<h3>
-<ul>
 
-<% @user.artists.each do |a| %>
-    <li> 
-    <%= link_to a.name, artist_path(a) %> 
-    </li>
-    <% end %>
-</ul>
+<div class="favorites">
+    <h3>Favorite Artists:<h3>
+    <ul>
 
+    <% @user.artists.each do |a| %>
+        <li>
+        <%= link_to a.name, artist_path(a) %>
+        </li>
+        <% end %>
+    </ul>
 <h3>Favorite Venues:<h3>
 <ul>
 <% @user.venues.each do |v| %>
-    <li> 
-    <%= link_to v.name, venue_path(v) %> 
+    <li>
+    <%= link_to v.name, venue_path(v) %>
     </li>
     <% end %>
 </ul>
@@ -24,17 +28,18 @@
 <h3>Upcoming Concerts:<h3>
 <ul>
 <% @user.concerts.each do |c| %>
-    <li> 
-    <%= link_to c.name, concert_path(c) %> 
+    <li>
+    <%= link_to c.name, concert_path(c) %>
     </li>
     <% end %>
 </ul>
+</div>
 
 <h3>Attended Concerts:<h3>
 <ul>
 <% @user.past_concerts.each do |c| %>
-    <li> 
-    <%= link_to c.name, concert_path(c) %> 
+    <li>
+    <%= link_to c.name, concert_path(c) %>
     </li>
     <% end %>
 </ul>
@@ -42,7 +47,7 @@
 <h3>My reviews:<h3>
 <ul>
 <% @user.reviews.each do |r| %>
-    <li> 
+    <li>
     <%= link_to r.concert.name, concert_path(r.concert.id) %>
     <%= r.title %>
     <%= r.content %>

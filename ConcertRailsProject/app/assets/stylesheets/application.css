@@ -1,15 +1,100 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+font-family: 'ZCOOL QingKe HuangYou', cursive;  margin 20px;
+color: white;
+
+}
+
+.background-image {
+  background-image: url("crowd.jpg");
+  background-size: cover;
+}
+
+
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  text-decoration: underline;
+}
+ul {
+  font-size: 30px;
+}
+
+.main-header {
+  text-align: center;
+}
+
+#login-text {
+  padding: 30px;
+
+}
+
+.sign-up {
+  text-align: center;
+  margin: 50px;
+
+}
+
+.header {
+  font-size: 50px;
+  text-align: center;
+  margin: 50px;
+}
+.welcome_msg {
+  text-align: center;
+  color: red;
+  font-size: 20px;
+  margin: 10px;
+}
+
+#profile-attributes {
+  text-align: center;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+#welcome_user {
+  text-align: center;
+  font-size: 50px;
+  color: white;
+}
+
+#logout {
+  margin-top: 20px;
+  float: left;
+  text-align: left;
+  font-size: 25px;
+}
+
+#profile-header {
+    text-decoration: underline;
+    padding: 40px;
+    margin-left: 400px;
+    text-align: center;
+}
+
+.card-body {
+  text-align: center;
+  font-size: 50px;
+}
+
+.card {
+  display: inline-block;
+  margin: 33px;
+  padding: 20px;
+  height: 300px;
+  width: 300px;
+  /* border-radius: 10px; */
+  border: 2px solid black;
+
+}
+.card-img-top {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.fav-artist {
+  text-align: center;
+}

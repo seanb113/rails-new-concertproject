@@ -9,10 +9,14 @@
 <% for concert in @concerts %>
 <tr>
   <td><%= link_to concert.name, concert_path(concert.id) %></td>
+  <% if concert.headliner %>
   <td><%= link_to concert.headliner.artist.name, artist_path(concert.headliner.artist.id) %></td>
+  <% end %>
   <td><%= concert.date.strftime("%B %e, %Y") %></td>
   <td><%= link_to concert.venue.name, venue_path(concert.venue.id) %></td>
+  <% if concert.location %>
   <td><%= link_to concert.location.name, location_path(concert.location.id) %></td>
+  <% end %>
 </tr>
 <% end %>
 </table>
