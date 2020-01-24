@@ -1,6 +1,6 @@
 <h1><%= @venue.name %> information</h1>
 <h2>Capacity: <%= @venue.capacity %> </h2>
-<h2><%= @venue.location.name %> </h2>
+<h2>Location: <%= link_to @venue.location.name, location_path(@venue.location) %> </h2>
 
 <%= link_to "Add As Favorite", venue_favorite_venues_path(@venue), method: :post %>
 <% if flash.notice %>

@@ -1,19 +1,28 @@
 class ConcertsController < ApplicationController
   before_action :find_concert, only: [:show, :edit, :destroy]
   
-  def index
-    @upcoming_concerts = Concert.all.select {|c| !c.date.past?}
-    #byebug
-    if params[:sort] == "location"
-    @concerts = @upcoming_concerts.sort_by{|c| c.location}
-    else
-    @concerts = @upcoming_concerts.sort_by{|c| c[params[:sort]]}
-    end
-  end
-  
   def show
     @review = Review.new
   end
+
+  def index
+    #@upcoming_concerts = Concert.all.select {|c| !c.date.past?}
+    #byebug
+    if params[:sort] == "location"
+      @concerts = Concert.search(params[:search]).sort_by{|c| c.location}
+    elsif params[:sort] == "name"
+      @concerts = Concert.search(params[:search]).sort_by{|c| c.sortable_name}
+    elsif params[:sort] == "artist"
+      @concerts = Concert.search(params[:search]).sort_by{|c| c.headliner.artist.sortable_name}
+    elsif params[:sort] == "venue"
+      @concerts = Concert.search(params[:search]).sort_by{|c| c.venue.sortable_name}
+    elsif params[:sort] == "date"
+      @concerts = Concert.search(params[:search]).sort_by{|c| c.date}
+    else
+      @concerts = Concert.search(params[:search]).sort_by{|c| c[params[:search]]}
+    end
+  end
+
 
   def edit
   end

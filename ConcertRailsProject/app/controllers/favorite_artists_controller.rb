@@ -6,10 +6,10 @@ class FavoriteArtistsController < ApplicationController
   end
 
   def create
-    if current_user && FavoriteArtist.create(artist: @artist, user: current_user)
+    if FavoriteArtist.create(artist: @artist, user: current_user).errors.messages.empty?
       redirect_to @artist, notice: 'Added to your favorites'
     else
-      redirect_to @artist, alert: 'Already added to your favorites'
+      redirect_to @artist, notice: 'Already added to your favorites'
     end
   end
 
@@ -17,10 +17,10 @@ class FavoriteArtistsController < ApplicationController
     # FavoriteArtist.where(artist_id: @artist.id, user_id: current_user.id).destroy
     # redirect_to @artist, notice: 'Artist removed from favorites'
     if current_user.unfavorite_artist(@artist)
-      flash.notice = 'Deleted from favorites'
+      flash.now.notice = 'Deleted from favorites'
       render 'artists/show'
     else
-      flash.notice = "This artist isn't in your favorites"
+      flash.now.notice = "This artist isn't in your favorites"
       render 'artists/show'
     end
   end
@@ -37,7 +37,7 @@ class FavoriteArtistsController < ApplicationController
 
   def require_login
     redirect_to controller: 'sessions', action: 'new' unless current_user
-    flash.notice = "You must be logged in to add favorites"
+    flash.now.notice = "You must be logged in to add favorites"
   end
 
 end

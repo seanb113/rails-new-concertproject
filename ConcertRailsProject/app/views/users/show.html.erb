@@ -42,10 +42,9 @@
 <h3>My reviews:<h3>
 <ul>
 <% @user.reviews.each do |r| %>
-    <li> 
-    <%= link_to r.concert.name, concert_path(r.concert.id) %>
-    <%= r.title %>
-    <%= r.content %>
-    </li>
+    <li>Concert: <%= link_to r.concert.name, concert_path(r.concert.id) %></li>
+    <li>Written: <%= r.created_at.strftime('%B %e, %Y') %></li>
+    <li>Review: <%= r.content %></li>
+    <li>Rating (out of 10): <%= r.rating %></li>
     <% end %>
 </ul>

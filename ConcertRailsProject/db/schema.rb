@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200123172750) do
+ActiveRecord::Schema.define(version: 20200123222216) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 20200123172750) do
     t.integer  "rating"
     t.index ["concert_id"], name: "index_reviews_on_concert_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "keywords"
+    t.string   "artist"
+    t.string   "venue"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "upcoming_concerts", force: :cascade do |t|

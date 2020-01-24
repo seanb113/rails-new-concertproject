@@ -36,5 +36,17 @@ beatlesconcert = Concert.create([{
       :date    => DateTime.new(2019,10,1,19)
       }])
       
-      beatlesatc1 = Performance.create(artist_id: 2, concert_id: 3, headliner: true)
+beatlesatc1 = Performance.create(artist_id: 2, concert_id: 3, headliner: true)
+
+anthem = Venue.create(name: 'The Anthem', capacity: 500, location_id: 1)
+
+beatlesconcert3 = Concert.create([{
+    :name      => "Hologram Lennon 2020",
+    :venue_id  => 3,
+    :date    => DateTime.new(2020,1,24,19)
+    }])
+
+beatlesatc12 = Performance.create(artist_id: 2, concert_id: 4, headliner: true)
+
+
       

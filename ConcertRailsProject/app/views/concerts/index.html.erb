@@ -1,4 +1,11 @@
-<h1>Upcoming Concerts</h1>
+<h1>All Concerts</h1>
+<%= form_tag concerts_path, :method => 'get', :id => "concerts_search" do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+
 <table class="concert">
 <tr>
 <th><%= link_to "Name", :sort => "name" %></th>
