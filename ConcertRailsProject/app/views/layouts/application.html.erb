@@ -14,20 +14,18 @@
       <div class="opacity">
     <% unless 1 == 1 && 1 == 2 %>
       <% if current_user %>
-<<<<<<< HEAD
         <div class="header">
           <div id="welcome_user">Welcome, <%= link_to current_user.username.titlecase, user_path(current_user) %>
             <h4 id="logout"><%= link_to "Logout", logout_path %></h4>
           </div>
         </div>
 
-    <!-- <div class="all-cards"> -->
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="https://images.unsplash.com/photo-1571115639914-0c85b3920515?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">See All Artists</h5>
-            <a href="/artists" class="btn btn-primary">Artists</a>
-          </div>
+            <a href="/artists" class="btn btn-primary" >Artists</a>
+            </div>
         </div>
 
         <div class="card" style="width: 18rem;">
@@ -45,13 +43,6 @@
             <h5 class="card-title">See All Venues</h5>
             <a href="/venues" class="btn btn-primary">Venues</a>
           </div>
-=======
-          <div> Welcome, <%= link_to current_user.username.titlecase, user_path(current_user) %>
-          <%= link_to 'See all artists', artists_path %>
-          <%= link_to 'See all concerts', concerts_path %>
-          <%= link_to 'See all venues', venues_path %></div>
-          <div><%= link_to "Logout", logout_path %></div>
->>>>>>> bcfc8f79f98767b94531789082b2dbc978f55679
         </div>
       <% else %>
         <div><%= link_to "Please log in", login_path %></div>

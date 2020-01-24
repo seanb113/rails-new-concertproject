@@ -33,7 +33,7 @@ end
 def unfavorite_venue(venue)
     @favorited_venue = FavoriteVenue.where(venue_id: venue.id, user_id: self.id)
     if @favorited_venue.exists?
-        @favortied_venue.destroy_all
+        @favorited_venue.destroy_all
     venue.reload
     end
 end

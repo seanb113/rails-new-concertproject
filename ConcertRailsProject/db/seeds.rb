@@ -17,6 +17,7 @@ beatles = Artist.create(genre: 'Rock', name: 'The Beatles', bio: 'Is a Liverpool
 
 #venues
 
+anthem = Venue.create(name: 'The Anthem', capacity: 500, location_id: 1)
 msg = Venue.create(name: 'Madison Square Garden', capacity: 10, location_id: nyc.id)
 capital1 = Venue.create(name: 'Capital One', capacity: 100000, location_id: dc.id)
 
@@ -26,46 +27,36 @@ toolconcert = Concert.create({
     :name      => "Tool Tour 2020",
     :venue_id  => msg.id,
     :date    => DateTime.new(2020,9,1,19)
-  })
+})
 
-  beatlesconcert = Concert.create({
+beatlesconcert = Concert.create({
     :name      => "Beatle Reunion 2020",
     :venue_id  => capital1.id,
     :date    => DateTime.new(2020,10,1,19)
-    })
+})
 
-  beatlesconcert2 = Concert.create({
-      :name      => "Beatle Without Ringo 2020",
-      :venue_id  => msg.id,
-      :date    => DateTime.new(2019,10,1,19)
-<<<<<<< HEAD
-      })
+beatlesconcert2 = Concert.create({
+    :name      => "Beatle Without Ringo 2020",
+    :venue_id  => msg.id,
+    :date    => DateTime.new(2019,10,1,19)
+})
 
+beatlesconcert3 = Concert.create([{
+:name      => "Hologram Lennon 2020",
+:venue_id  => anthem.id,
+:date    => DateTime.new(2020,1,24,19)
+}])
+
+toolconcert3 = Concert.create([{
+    :name      => "Tool Rides Again",
+    :venue_id  => capital1.id,
+    :date    => DateTime.new(2020,1,24,19)
+    }])
 #Performances
 
 toolatcapital1 = Performance.create(artist_id: tool.id, concert_id: toolconcert.id, headliner: true)
 beatlesatcapital1 = Performance.create(artist_id: beatles.id, concert_id: beatlesconcert.id, headliner: false)
 beatlesatmsg = Performance.create(artist_id: beatles.id, concert_id: beatlesconcert2.id, headliner: true)
 beatlesatc1 = Performance.create(artist_id: beatles.id, concert_id: beatlesconcert.id, headliner: true)
-
-
-# byebug
-# 0
-=======
-      }])
-      
-beatlesatc1 = Performance.create(artist_id: 2, concert_id: 3, headliner: true)
-
-anthem = Venue.create(name: 'The Anthem', capacity: 500, location_id: 1)
-
-beatlesconcert3 = Concert.create([{
-    :name      => "Hologram Lennon 2020",
-    :venue_id  => 3,
-    :date    => DateTime.new(2020,1,24,19)
-    }])
-
-beatlesatc12 = Performance.create(artist_id: 2, concert_id: 4, headliner: true)
-
-
-      
->>>>>>> bcfc8f79f98767b94531789082b2dbc978f55679
+beatlesatc12 = Performance.create(artist_id: beatles.id, concert_id: 4, headliner: true)
+toolridesagain = Performance.create(artist_id: tool.id, concert_id: 5, headliner: true)

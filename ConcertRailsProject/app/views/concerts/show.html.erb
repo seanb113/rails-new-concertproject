@@ -24,10 +24,10 @@
       <h1> Reviews: <h1>
       <ul>
       <% @concert.reviews.each do |r| %>
-        <li>Review By: <%= link_to r.user.username, user_path(r.user_id) %></li>
+        <br><li>Review By: <%= link_to r.user.username, user_path(r.user_id) %></li>
         <li>Written <%= r.created_at.strftime('%B %e, %Y') %></li>
         <li><%= r.content %></li>
-        <li>Rating (out of 10): <%= r.rating %></li>
+        <li>Rating (out of 10): <%= r.rating %></li></br>
         <% end %>
         </ul>
         

@@ -1,6 +1,8 @@
 body {
 font-family: 'ZCOOL QingKe HuangYou', cursive;  margin 20px;
 color: white;
+background-image: url("crowd.jpg");
+background-size: cover;
 
 }
 
@@ -9,7 +11,16 @@ color: white;
   background-size: cover;
 }
 
+.concert {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.search {
+    text-align: center;
+    margin: 20px;
+}
 
 h1 {
   text-align: center;
@@ -74,10 +85,7 @@ ul {
     text-align: center;
 }
 
-.card-body {
-  text-align: center;
-  font-size: 50px;
-}
+
 
 .card {
   display: inline-block;
@@ -95,6 +103,19 @@ ul {
   width: 100%;
 }
 
+.card-title {
+    text-align: center
+}
+
+.card-button {
+    text-align: center
+}
+
 .fav-artist {
   text-align: center;
 }
+
+.lp-pom-text ul, li {
+    list-style-type: none !important;
+    }
+
